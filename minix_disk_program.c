@@ -155,6 +155,8 @@ void traverse(int long_list) {
     for (i = 0; i < numberOfFiles; i++) {
         print(fileNameFromshowfile);
         print(\n);
+    OR
+    apply_ls_to_minix_image_file(minixImageFile);
     }
         code should display the following for each file in this order (if applicable):
         
@@ -255,11 +257,16 @@ void traverse(int long_list) {
                 } else {
                     print("-");
                 }
+
+                OR
+                parse_permissions(currentFileInDirectory);
                 
-                links (?), file size, date last modifed code goes here
+                user and group id's, file size, date last modifed code goes here
                 
                 print(fileName);
                 print(\n);
+            OR
+            apply_ls-l_to_minix_image_file(minixImageFile);
             }
         }
     }
