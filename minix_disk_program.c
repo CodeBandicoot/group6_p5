@@ -152,122 +152,38 @@ void traverse(int long_list) {
 
     /*
     if (firstTextItem = "traverse") {
-    for (i = 0; i < numberOfFiles; i++) {
-        print(fileNameFromshowfile);
-        print(\n);
-    OR
-    apply_ls_to_minix_image_file(minixImageFile);
-    }
-        code should display the following for each file in this order (if applicable):
-        
-        values below are mode fields in i-node struct:
-        S_IFREG    0100000   regular file = -_________
-        S_IFDIR    0040000   directory = d_________
-        S_IRWXU    00700     mask for file owner permissions = _rwx______
-        S_IRUSR    00400     owner has read permission = _r________
-        S_IWUSR    00200     owner has write permission = __w_______
-        S_IXUSR    00100     owner has execute permission = ___x______
-        S_IRWXG    00070     mask for group permissions = ____rwx___
-        S_IRGRP    00040     group has read permission = ____r_____
-        S_IWGRP    00020     group has write permission = _____w____
-        S_IXGRP    00010     group has execute permission = ______x___
-        S_IRWXO    00007     mask for permissions for others (not in group) = _______rwx
-        S_IROTH    00004     others have read permission = _______r__
-        S_IWOTH    00002     others have write permission = ________w_
-        S_IXOTH    00001     others have execute permission = _________x
-        
-        number after permissions is group id(also need to put user id before the group id)
-        number after user and group id's is file size in bytes
-        format of date last changed is month day year
-        file name
     
-        pseudocode for listing display in long format:
-        if (secondTextItem = "-l") {
-            for (int i = 0; i < numberOfFilesOnMinixDisk; i++) {
-                if (fileType = normalFileValue(S_IFREG or 0100000)) {
-                    print("-");
-                } else if (fileType = directoryValue(SIFDIR or 0040000)) {
-                    print("d");
-                } else {
-                    print(fileTypeError);
-                }
-                
-                if (ownerPermissionMask = S_IRWXU or 00700) {
-                    print("rwx");
-                }
-                
-                if (ownerReadPermission = S_IRUSR or 00400) {
-                    print("r");
-                } else {
-                    print("-");
-                }
-                
-                if (ownerWritePermission = S_IWUSR or 00200) {
-                    print("w");
-                } else {
-                    print("-");
-                }
+        //open the directory
+        DIR *dir_stream;
         
-                if (ownerExecutePermission = S_IXUSR or 00100) {
-                    print("x");
-                } else {
-                    print("-");
-                }
-                
-                if (groupPermissionMask = S_IRWXG or 00070) {
-                    print("rwx");
-                }
-                
-                if (groupReadPermission = S_IRGRP or 00040) {
-                    print("r");
-                } else {
-                    print("-");
-                }
-                
-                if (groupWritePermission = S_IWGRP or 00020) {
-                    print("w");
-                } else {
-                    print("-");
-                }
-                
-                if (groupExecutePermission = S_IXGRP or 00010) {
-                    print("x");
-                } else {
-                    print("-");
-                }
-            
-                if (otherPermissionMask = S_IRWXO or 00007) {
-                    print("rwx");
-                }
-            
-                if (otherReadPermission = S_IROTH or 00004) {
-                    print("r");
-                } else {
-                    print("-");
-                }
-                
-                if (otherWritePermission = S_IWOTH or 00002) {
-                    print("w");
-                } else {
-                    print("-");
-                }
-                
-                if (otherExecutePermission = S_IXOTH or 00001) {
-                    print("x");
-                } else {
-                    print("-");
-                }
-
-                OR
-                parse_permissions(currentFileInDirectory);
-                
-                user and group id's, file size, date last modifed code goes here
-                
-                print(fileName);
-                print(\n);
-            OR
-            apply_ls-l_to_minix_image_file(minixImageFile);
-            }
+        dir_stream = opendir("imageFileDirectoryHere");
+    
+        if (dir_stream == NULL){
+            printf("Directory could not be opened correctly \n")
+            return;
+        }
+    
+        //read and print the directory
+        while((dir_read = readdir(dir_stream)) != NULL){
+            printf("%s\n", dir_read->d_name);
+        }
+    
+        //close the directory
+        if (closedir(dir_stream) == -1){
+            printf("Directory could not be closed\n");
+        }
+    }
+    
+    pseudocode for listing display in long format:
+    if (secondTextItem = "-l") {
+        for (i = 0; i < imageFileDirectoryLength; i++){
+            permissions
+            user id
+            group id 
+            file size in bytes 
+            printf(date last modifed(month day year format));
+            printf("%s", fileName);
+            printf("\n");
         }
     }
     */
