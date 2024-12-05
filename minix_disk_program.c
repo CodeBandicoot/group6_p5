@@ -151,40 +151,14 @@ void traverse(int long_list) {
     printf("Traverse functionality not fully implemented yet.\n");
 
     /*
+    // listing display
     if (firstTextItem = "traverse") {
-    
-        //open the directory
-        DIR *dir_stream;
-        
-        dir_stream = opendir("imageFileDirectoryHere");
-    
-        if (dir_stream == NULL){
-            printf("Directory could not be opened correctly \n")
-            return;
-        }
-    
-        //read and print the directory
-        while((dir_read = readdir(dir_stream)) != NULL){
-            printf("%s\n", dir_read->d_name);
-        }
-    
-        //close the directory
-        if (closedir(dir_stream) == -1){
-            printf("Directory could not be closed\n");
-        }
+        read image file
     }
     
-    pseudocode for listing display in long format:
+    //listing display in long format:
     if (secondTextItem = "-l") {
-        for (i = 0; i < imageFileDirectoryLength; i++){
-            permissions
-            user id
-            group id 
-            file size in bytes 
-            printf(date last modifed(month day year format));
-            printf("%s", fileName);
-            printf("\n");
-        }
+        read i-node data
     }
     */
 }
